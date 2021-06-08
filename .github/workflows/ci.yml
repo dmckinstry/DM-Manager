@@ -22,14 +22,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Lint CPP files
-      run: |
-        ls ..
-        ls -al
-        pwd
-        npm install cpplint
-        cpplint *.cpp
+#     - name: Lint CPP files
+#       run: |
+#         npm install cpplint
+#         cpplint *.cpp
 
     - name: Build main
-      run: |
-        g++ main.cpp -o main.exe
+      run: g++ main.cpp -o main.exe
