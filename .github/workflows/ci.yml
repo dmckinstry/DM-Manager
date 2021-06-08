@@ -23,7 +23,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build main
-      run: g++ main.cpp -o main.exe
+      run: |
+        g++ main.cpp -o main.exe
+        ls -al
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2.2.3
