@@ -1,0 +1,31 @@
+name: DM-Manager-CI
+
+on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+  workflow_dispatch:
+
+# env:
+#   BUILD_TYPE: Release
+
+defaults:
+  run:
+    shell: bash
+    working-directory: DMManager
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+#     - name: Lint CPP files
+#       run: |
+#         npm install cpplint
+#         cpplint *.cpp
+
+    - name: Build main
+      run: g++ main.cpp -o main.exe
