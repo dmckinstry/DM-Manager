@@ -1,14 +1,11 @@
 name: DM-Manager-CI
 
 on:
-#   push:
-#     branches: [ main ]
-#   pull_request:
-#     branches: [ main ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
   workflow_dispatch:
-
-# env:
-#   BUILD_TYPE: Release
 
 defaults:
   run:
@@ -18,14 +15,15 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
 
-#     - name: Lint CPP files
-#       run: |
-#         npm install cpplint
-#         cpplint *.cpp
-
     - name: Build main
-      run: g++ main.cpp -o main.exe
+      run: |
+        g++ main.cpp -o main.exe
+        
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v2.2.3
+      with:
+        name: Linux executable
+        path: DMManager/main.exe
